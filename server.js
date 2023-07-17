@@ -2,7 +2,7 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
-
+const path = require('path')
 const AuthRouter = require('./routes/AuthRouter')
 const PostRouter = require('./routes/PostRouter')
 
@@ -17,13 +17,13 @@ app.use(logger('dev'))
 app.use(fileUpload())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(`${__dirname}/dist`))
+app.use(express.static(`app/dist`))
 
 app.use('/api/auth', AuthRouter)
 app.use('/api/posts', PostRouter)
 
 app.get('/*', (req, res) => {
-  res.sendFile(`/app/dist/index.html`)
+  res.sendFile(path.resolve(__dirname, 'app', 'dist', 'index.html'))
 })
 
 app.listen(PORT, () => {
