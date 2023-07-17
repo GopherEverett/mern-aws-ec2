@@ -17,12 +17,13 @@ app.use(logger('dev'))
 app.use(fileUpload())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(`${__dirname}/client/dist`))
 
-app.use('/auth', AuthRouter)
-app.use('/posts', PostRouter)
+app.use('/api/auth', AuthRouter)
+app.use('/api/posts', PostRouter)
 
-app.use('/', (req, res) => {
-  res.send(`Connected!`)
+app.get('/*', (req, res) => {
+  res.sendFile(`${__dirname}/client/dist/index.html`)
 })
 
 app.listen(PORT, () => {
