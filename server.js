@@ -17,14 +17,12 @@ app.use(logger('dev'))
 app.use(fileUpload())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(`app/dist`))
+// app.use(express.static(`app/dist`))
 
 app.use('/api/auth', AuthRouter)
 app.use('/api/posts', PostRouter)
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname,'dist', 'index.html'))
-})
+
 
 app.listen(PORT, () => {
   console.log(`Running Express server on Port ${PORT} . . .`)
