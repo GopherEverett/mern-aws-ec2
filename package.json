@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "node --watch server.js",
-    "build": "cd client && npm install"
+    "build": "cd app && npm install"
   },
   "author": "Michael Lackey",
   "license": "MIT",
