@@ -23,7 +23,7 @@ app.use('/api/auth', AuthRouter)
 app.use('/api/posts', PostRouter)
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'app', 'dist', 'index.html'))
+  res.sendFile(path.resolve(__dirname,'dist', 'index.html'))
 })
 
 app.listen(PORT, () => {
